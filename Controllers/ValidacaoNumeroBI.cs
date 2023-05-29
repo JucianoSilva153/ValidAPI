@@ -8,7 +8,7 @@ using ValidAPI.Rules;
 namespace ValidAPI.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("api/Validacao")]
     public class ValidacaoNumeroBI : ControllerBase
     {
         RegrasValidacao validator = new RegrasValidacao();
