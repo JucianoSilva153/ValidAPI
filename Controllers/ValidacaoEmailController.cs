@@ -11,7 +11,6 @@ namespace ValidAPI.Controllers
     [Route("api/Validacao")]
     public class ValidacaoEmailController : ControllerBase
     {
-
         RegrasValidacao validator = new RegrasValidacao();
 
         [HttpGet]
