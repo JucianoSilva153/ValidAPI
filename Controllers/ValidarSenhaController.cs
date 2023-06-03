@@ -14,9 +14,9 @@ namespace ValidAPI.Controllers
         RegrasValidacao validator = new RegrasValidacao();
 
         [HttpGet]
-        [Route("Senha/{maxChar}/{senha}")]
-        public IActionResult ValidarSenha(int maxChar, string senha){
-            if(validator.ValidarSenha(senha, maxChar))
+        [Route("Senha/{minChar}/{senha}")]
+        public IActionResult ValidarSenha(int minChar, string senha){
+            if(validator.ValidarSenha(senha, minChar))
                 return Ok(new RetornoValidacao("Senha Válida!", senha, true));
             return Ok(new RetornoValidacao("Senha Inválida!", senha, false));
         }

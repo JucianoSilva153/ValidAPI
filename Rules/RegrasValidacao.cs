@@ -24,7 +24,6 @@ namespace ValidAPI.Rules
             }
             return false;
         }
-
         public string[] DivideEmail(string email)
         {
             if (email.Contains("@"))
@@ -35,7 +34,6 @@ namespace ValidAPI.Rules
 
             return null;
         }
-
         public bool ValidarParteLocalEmail(string parteEmail)
         {
             if (parteEmail[0] != '.'
@@ -44,7 +42,6 @@ namespace ValidAPI.Rules
                 return true;
             return false;
         }
-
         public bool ValidarParteDominioEmail(string dominioEmail)
         {
             if (dominioEmail.Length <= 63
@@ -55,26 +52,63 @@ namespace ValidAPI.Rules
             return false;
         }
 
-        public bool ValidarSenha(string senha, int maxCarateres)
+        public bool ValidarSenha(string senha, int minCarateres)
         {
-            if (senha.Length <= maxCarateres && VerificarSenha(senha) && senha.Length >= 8)
+            if (senha.Length >= minCarateres && VerificarSenha(senha))
                 return true;
             return false;
         }
-
         public bool VerificarSenha(string senha)
         {
-            if (!senha.Contains("=")
-            && !senha.Contains("+")
-            && !senha.Contains("-")
-            && !senha.Contains("_")
-            && !senha.Contains("*")
-            && !senha.Contains(")")
-            && !senha.Contains("(")
-            && !senha.Contains("%")
-            && !senha.Contains("^")
-            && !senha.Contains("#")
-            && !senha.Contains("~"))
+            if (VerificarSenhaSegura(senha))
+                return true;
+            return false;
+        }
+        public bool VerificarSenhaSegura(string senha)
+        {
+            if(VerificarCaracteresEspeciaisEmSenhas(senha)
+            && VerificarSenhaContemLetrasMaisculas(senha)
+            && VerificarSenhaContemLetrasMinusculas(senha))
+                return true;
+            return false;
+        }
+        public bool VerificarSenhaContemLetrasMaisculas(string senha)
+        {
+            for (char letra = 'A'; letra <= 'Z'; letra++)
+            {
+                for (int i = 0; i < senha.Length; i++)
+                {
+                    if (senha[i] == letra)
+                        return true;
+                }
+            }
+            return false;
+        }
+        public bool VerificarSenhaContemLetrasMinusculas(string senha)
+        {
+            for (char letra = 'a'; letra <= 'z'; letra++)
+            {
+                for (int i = 0; i < senha.Length; i++)
+                {
+                    if (senha[i] == letra)
+                        return true;
+                }
+            }
+            return false;
+        }
+        public bool VerificarCaracteresEspeciaisEmSenhas(string senha)
+        {
+            if (senha.Contains('#')
+            || senha.Contains('-')
+            || senha.Contains('+')
+            || senha.Contains('[')
+            || senha.Contains(']')
+            || senha.Contains('*')
+            || senha.Contains('~')
+            || senha.Contains('_')
+            || senha.Contains('@')
+            || senha.Contains('#')
+            || senha.Contains('?'))
                 return true;
             return false;
         }
@@ -86,7 +120,6 @@ namespace ValidAPI.Rules
                 return true;
             return false;
         }
-
         public bool VerificarLetrasBI(string BI)
         {
             for (char i = 'A'; i <= 'Z'; i++)
