@@ -47,7 +47,14 @@ namespace ValidAPI.Rules
             if (dominioEmail.Length <= 63
             && dominioEmail[0] != '-'
             && dominioEmail[dominioEmail.Length - 1] != '-'
-            && dominioEmail.Contains(".com"))
+            && dominioEmail.Contains(".com")
+            && (dominioEmail.Contains("gmail") 
+                || dominioEmail.Contains("outlook") 
+                || dominioEmail.Contains("yahoo")
+                || dominioEmail.Contains("yandex")
+                || dominioEmail.Contains("icloud")
+                || dominioEmail.Contains("gmail")
+                || dominioEmail.Contains("mail")))
                 return true;
             return false;
         }
