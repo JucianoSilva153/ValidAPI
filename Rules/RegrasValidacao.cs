@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ValidAPI.Rules
 {
     public class RegrasValidacao
     {
+        //TODO: Adicionar Tratamento de Erro, quando os parametros forem null ou empty
         public bool ValidarNumeroTelefoneAO(int numero)
         {
             if (numero.ToString().Length == 9 && numero.ToString()[0] == '9')
@@ -36,25 +38,15 @@ namespace ValidAPI.Rules
         }
         public bool ValidarParteLocalEmail(string parteEmail)
         {
-            if (parteEmail[0] != '.'
-            && !parteEmail.Contains("..")
-            && parteEmail.Length <= 64)
+            string padraoEmailParteLoacal = @"^[a-zA-Z0-9._%+-]+$";
+            if (Regex.IsMatch(parteEmail, padraoEmailParteLoacal))
                 return true;
             return false;
         }
         public bool ValidarParteDominioEmail(string dominioEmail)
         {
-            if (dominioEmail.Length <= 63
-            && dominioEmail[0] != '-'
-            && dominioEmail[dominioEmail.Length - 1] != '-'
-            && dominioEmail.Contains(".com")
-            && (dominioEmail.Contains("gmail") 
-                || dominioEmail.Contains("outlook") 
-                || dominioEmail.Contains("yahoo")
-                || dominioEmail.Contains("yandex")
-                || dominioEmail.Contains("icloud")
-                || dominioEmail.Contains("gmail")
-                || dominioEmail.Contains("mail")))
+            string padraoEmailDominio = @"^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            if (Regex.IsMatch(dominioEmail, padraoEmailDominio))
                 return true;
             return false;
         }
