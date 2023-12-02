@@ -74,16 +74,9 @@ namespace ValidAPI.Rules
         }
         public bool VerificarLetrasBI(string BI)
         {
-            for (char i = 'A'; i <= 'Z'; i++)
-            {
-                if (BI[9].ToString().Contains(i))
-                    for (char j = 'A'; j <= 'Z'; j++)
-                    {
-                        if (BI[10].ToString().Contains(j))
-                            return true;
-                    }
-            }
-
+            string padraoBI = @"^\d(9)[A-Z]{2}\d(3)$";
+            if(Regex.IsMatch(BI, padraoBI))
+                return true;
             return false;
         }
 
