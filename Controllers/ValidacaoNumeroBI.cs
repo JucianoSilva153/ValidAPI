@@ -11,11 +11,10 @@ namespace ValidAPI.Controllers
     [Route("api/Validacao")]
     public class ValidacaoNumeroBI : ControllerBase
     {
-        RegrasValidacao validator = new RegrasValidacao();
 
         [HttpGet]
         [Route("BI/{numeroBI}")]
-        public IActionResult ValidarNumeroBI(string numeroBI){
+        public IActionResult ValidarNumeroBI(string numeroBI, [FromServices] RegrasValidacao validator){
             if(validator.ValidarBI(numeroBI))
                 return Ok(new RetornoValidacao("Número de BI Válido!", numeroBI, true));
             return Ok(new RetornoValidacao("Número de BI Inválido!", numeroBI, false));

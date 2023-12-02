@@ -12,11 +12,9 @@ namespace ValidAPI.Controllers
     public class ValidacaoNumeroTelefoneController : ControllerBase
     {
 
-        RegrasValidacao validator = new RegrasValidacao();
-
         [HttpGet]
         [Route("AO/{numero}")]
-        public IActionResult ValidarNumeroTelefoneAO(int numero)
+        public IActionResult ValidarNumeroTelefoneAO(int numero, [FromServices] RegrasValidacao validator)
         {
             if(validator.ValidarNumeroTelefoneAO(numero))
                 return Ok(new RetornoValidacao("Número de Telemóvel Válido!", numero, true));
