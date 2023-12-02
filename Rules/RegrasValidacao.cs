@@ -34,7 +34,7 @@ namespace ValidAPI.Rules
                 return componentesMail;
             }
 
-            return null;
+            return new string[0];
         }
         public bool ValidarParteLocalEmail(string parteEmail)
         {
@@ -53,62 +53,15 @@ namespace ValidAPI.Rules
 
         public bool ValidarSenha(string senha, int minCarateres)
         {
-            if (senha.Length >= minCarateres && VerificarSenha(senha))
+            if (senha.Length >= minCarateres && VerificarSenhaSegura(senha))
                 return true;
             return false;
         }
-        public bool VerificarSenha(string senha)
-        {
-            if (VerificarSenhaSegura(senha))
+        public bool VerificarSenhaSegura(string senha){
+            string padraoSenha = "^(?=.*[a-zA-Z0-9@_%+-]).+$";
+            if(Regex.IsMatch(senha, padraoSenha)){
                 return true;
-            return false;
-        }
-        public bool VerificarSenhaSegura(string senha)
-        {
-            if(VerificarCaracteresEspeciaisEmSenhas(senha)
-            && VerificarSenhaContemLetrasMaisculas(senha)
-            && VerificarSenhaContemLetrasMinusculas(senha))
-                return true;
-            return false;
-        }
-        public bool VerificarSenhaContemLetrasMaisculas(string senha)
-        {
-            for (char letra = 'A'; letra <= 'Z'; letra++)
-            {
-                for (int i = 0; i < senha.Length; i++)
-                {
-                    if (senha[i] == letra)
-                        return true;
-                }
             }
-            return false;
-        }
-        public bool VerificarSenhaContemLetrasMinusculas(string senha)
-        {
-            for (char letra = 'a'; letra <= 'z'; letra++)
-            {
-                for (int i = 0; i < senha.Length; i++)
-                {
-                    if (senha[i] == letra)
-                        return true;
-                }
-            }
-            return false;
-        }
-        public bool VerificarCaracteresEspeciaisEmSenhas(string senha)
-        {
-            if (senha.Contains('#')
-            || senha.Contains('-')
-            || senha.Contains('+')
-            || senha.Contains('[')
-            || senha.Contains(']')
-            || senha.Contains('*')
-            || senha.Contains('~')
-            || senha.Contains('_')
-            || senha.Contains('@')
-            || senha.Contains('#')
-            || senha.Contains('?'))
-                return true;
             return false;
         }
 
