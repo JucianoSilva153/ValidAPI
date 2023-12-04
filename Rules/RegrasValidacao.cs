@@ -15,7 +15,6 @@ namespace ValidAPI.Rules
                 return true;
             return false;
         }
-
         public bool ValidarEmail(string mail)
         {
             var mailDividido = DivideEmail(mail);
@@ -50,21 +49,19 @@ namespace ValidAPI.Rules
                 return true;
             return false;
         }
-
         public bool ValidarSenha(string senha, int minCarateres)
         {
-            if (senha.Length >= minCarateres && VerificarSenhaSegura(senha))
+            if (senha.Length >= minCarateres && VerificarSenhaSegura(senha, minCarateres))
                 return true;
             return false;
         }
-        public bool VerificarSenhaSegura(string senha){
-            string padraoSenha = "^(?=.*[a-zA-Z0-9@_%+-]).+$";
+        public bool VerificarSenhaSegura(string senha, int minChar){
+            string padraoSenha = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{"+ minChar + ",}$";
             if(Regex.IsMatch(senha, padraoSenha)){
                 return true;
             }
             return false;
         }
-
         public bool ValidarBI(string BI)
         {
             if (BI.Length == 14
