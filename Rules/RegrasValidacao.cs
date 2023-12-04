@@ -25,7 +25,7 @@ namespace ValidAPI.Rules
             }
             return false;
         }
-        public string[] DivideEmail(string email)
+        private string[] DivideEmail(string email)
         {
             if (email.Contains("@"))
             {
@@ -35,14 +35,14 @@ namespace ValidAPI.Rules
 
             return new string[0];
         }
-        public bool ValidarParteLocalEmail(string parteEmail)
+        private bool ValidarParteLocalEmail(string parteEmail)
         {
             string padraoEmailParteLoacal = @"^[a-zA-Z0-9._%+-]+$";
             if (Regex.IsMatch(parteEmail, padraoEmailParteLoacal))
                 return true;
             return false;
         }
-        public bool ValidarParteDominioEmail(string dominioEmail)
+        private bool ValidarParteDominioEmail(string dominioEmail)
         {
             string padraoEmailDominio = @"^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             if (Regex.IsMatch(dominioEmail, padraoEmailDominio))
@@ -55,7 +55,7 @@ namespace ValidAPI.Rules
                 return true;
             return false;
         }
-        public bool VerificarSenhaSegura(string senha, int minChar){
+        private bool VerificarSenhaSegura(string senha, int minChar){
             string padraoSenha = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{"+ minChar + ",}$";
             if(Regex.IsMatch(senha, padraoSenha)){
                 return true;
@@ -69,7 +69,7 @@ namespace ValidAPI.Rules
                 return true;
             return false;
         }
-        public bool VerificarLetrasBI(string BI)
+        private bool VerificarLetrasBI(string BI)
         {
             string padraoBI = @"^\d(9)[A-Z]{2}\d(3)$";
             if(Regex.IsMatch(BI, padraoBI))
