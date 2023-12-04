@@ -71,7 +71,7 @@ namespace ValidAPI.Rules
         }
         private bool VerificarLetrasBI(string BI)
         {
-            string padraoBI = @"^\d(9)[A-Z]{2}\d(3)$";
+            string padraoBI = @"^\d{9}[A-Z]{2}\d{3}$";
             if(Regex.IsMatch(BI, padraoBI))
                 return true;
             return false;
