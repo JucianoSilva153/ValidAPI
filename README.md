@@ -15,6 +15,8 @@ ValidusAPI is an open-source project based on an API for Information and Data Va
 * Run <em>dotnet run</em> do execute de API.
 * Connect to the API using the url given in the console.
 ### API Endpoints
+Base Adress: https://validusapi.onrender.com
+
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
 | GET | /api/Validacao/{email} | To validate an email |
