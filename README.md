@@ -1,23 +1,32 @@
-<h1 align="center">ValidAPI</h1>
+<h1 align="center">ValidusAPI</h1>
 <p align="center">
-<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
-</p>
-<p>Uma API para validação de campos. Integrando a ValidAPI com seus Websites, ou aplicativos você poderá facilmente validar todos os seus formulários de forma simples e rápida.</p>
+<img src="http://img.shields.io/static/v1?label=STATUS&message=On%20Development&color=GREEN&style=for-the-badge"/>
 
-<h1 align="center">Dados disponíveis para Validação</h1>
-
-- `Email` : Poderá Validar endereços eletrónicos de Email de diferentes domínio
-- `Número de Telefone`: Valida também Contacto telefónico. De lembrar que em fase inicial ainda conta com suporte a contactos de Angola
-- `Senhas` : Validação de senhas seguindo quantos número de caracteres o desenvolver quer. Quanto ao uso de regras e padrões de senhas e palavra-passes seguras ainda em desenvolvimento.
-- `Número de Bilhete de Identidade` : Valida o Número de BI para Cidadão Angolanos.
-
-<h1 align="center">Técnicas e tecnologias utilizadas</h1>
-
-- C#
-- ASP.NET Core
-- Visual Studio Code
-- Princípios de Clean Code
-- POO
-
-
-..Carregando...
+ValidusAPI is an open-source project based on an API for Information and Data Validation. With ValidusAPI, developers can easily validate information from their forms, such as phone numbers, emails, identification cards, and even check for secure passwords.
+### ValidusAPI Features
+* Identification Validation (Angola Only)
+* Phone Number Validation (Angola only)
+* Email Validation
+* Password Checker
+### Installation Guide
+* Clone this repository [here](https://github.com/JucianoSilva153/ValidAPI.git).
+* Run <em>dotnet restore</em> to install all dependencies
+### Usage
+* Run <em>dotnet run</em> do execute de API.
+* Connect to the API using the url given in the console.
+### API Endpoints
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/Validacao/{email} | To validate an email |
+| GET | /api/Validacao/BI/{BI number} | To validate a BI number |
+| GET | /api/Validacao/AO/{phone number} | To validate a phone number (for Angola) |
+| GET | /api/Validacao/Senha/{minChar}/{password} | To validate a password by checking if its secure |
+### Technologies Used
+* [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) NET is a free, cross-platform, open-source developer platform. .NET has languages, editors, and libraries to build for web, mobile, desktop, games, and IoT.
+* [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-8.0) ASP.NET Core is a cross-platform, high-performance, open-source framework for building modern, cloud-enabled, Internet-connected apps.
+### Authors
+* [Juciano Silva](https://github.com/jucianosilva153)
+### ValidusAPI needs your contribuition!!
+I would be grateful if you could contribute to my project. So, if you want to make any type of contribution, please feel free to do so. Just clone the project and push all your changes to a new branch!
+### License
+This project is available for use under the MIT License.
