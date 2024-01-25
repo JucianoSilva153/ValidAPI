@@ -23,6 +23,20 @@ Base Adress: https://validusapi.onrender.com
 | GET | /api/Validacao/BI/{BI number} | To validate a BI number |
 | GET | /api/Validacao/AO/{phone number} | To validate a phone number (for Angola) |
 | GET | /api/Validacao/Senha/{minChar}/{password} | To validate a password by checking if its secure |
+
+#### Response
+When you make a request to the API, you will receive a response like the following:
+<pre>
+  {
+    "mensagem": "Email Válido!",
+    "target": "juciao@gmail.com",
+    "validado": true
+  }
+</pre>
+The JSON above, represents an Email validation response, and will be the same with other type of validation, where:
+* <b>mensagem</b> : represents a string containing the response message.
+* <b>target</b> : the target to be validated.
+* <b>validado</b> : represent a bool value. true if the target is valid, otherwise false.
 ### Technologies Used
 * [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) NET is a free, cross-platform, open-source developer platform. .NET has languages, editors, and libraries to build for web, mobile, desktop, games, and IoT.
 * [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-8.0) ASP.NET Core is a cross-platform, high-performance, open-source framework for building modern, cloud-enabled, Internet-connected apps.
